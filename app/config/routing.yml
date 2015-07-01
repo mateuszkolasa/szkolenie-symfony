@@ -1,0 +1,4 @@
+polcode_product:
+    resource: "@PolcodeProductBundle/Resources/config/routing.yml"
+    prefix:   /
+

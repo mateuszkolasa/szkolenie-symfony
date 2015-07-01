@@ -1,0 +1,3 @@
+polcode_product_homepage:
+    path:     /hello/{name}
+    defaults: { _controller: PolcodeProductBundle:Default:index }
