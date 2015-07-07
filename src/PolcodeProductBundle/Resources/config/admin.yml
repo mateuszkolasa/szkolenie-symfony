@@ -1,0 +1,29 @@
+services:
+    sonata.admin.product:
+        class: PolcodeProductBundle\Admin\ProductAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Products", label: "Product" }
+        arguments:
+            - ~
+            - PolcodeProductBundle\Entity\Product
+            - ~
+        calls:
+            - [ setTranslationDomain, [AcmeDemoBundle]]
+            
+            
+    sonata.admin.category:
+        class: PolcodeProductBundle\Admin\CategoryAdmin
+        tags:
+            - { name: sonata.admin, manager_type: orm, group: "Categories", label: "Category" }
+        arguments:
+            - ~
+            - PolcodeProductBundle\Entity\Category
+            - ~
+        calls:
+            - [ setTranslationDomain, [AcmeDemoBundle]]
+
+    polcode_product.admin.product:
+        class: PolcodeProductBundle\Admin\ProductAdmin
+        arguments: [~, PolcodeProductBundle\Entity\Product, PolcodeProductBundle:ProductAdmin]
+        tags:
+            - {name: sonata.admin, manager_type: orm, group: admin, label: Product}

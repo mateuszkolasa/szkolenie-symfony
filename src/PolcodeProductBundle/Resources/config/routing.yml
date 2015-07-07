@@ -1,3 +1,9 @@
 polcode_product:
     type: annotation
     resource: @PolcodeProductBundle/Controller/DefaultController.php
+
+api_get_users:
+    pattern: /crud
+    defaults: { _controller: PolcodeProductBundle:ProductAdminController:index, name: null, _format: json }
+    methods: [GET]
+    

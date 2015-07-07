@@ -27,7 +27,7 @@ class Category {
 	 */
 	protected $products;
     
-    public function __GET($name) {
+    public function __get($name) {
         return $this->$name;
     }
     
@@ -35,5 +35,9 @@ class Category {
         $this->$name = $value;
         
         return $this;
+    }
+    
+    public function __toString() {
+        return $this->name;
     }
 }
