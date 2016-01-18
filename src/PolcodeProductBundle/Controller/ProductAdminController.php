@@ -8,11 +8,11 @@ use Sensio\Bundle\FrameworkExtraBundle\Configuration\Method;
 
 class ProductAdminController extends CRUDController {
     
-    /*
-     * @Route(name="app_product_admin", path="/product")
-     *
+    /**
+     * @Route(name="app_product_crud", path="/product")
+     */
     public function productAction() {
         echo 1234567890;
-    }*/
+    }
     
 }

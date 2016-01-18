@@ -1,6 +1,10 @@
 polcode_product:
     type: annotation
     resource: @PolcodeProductBundle/Controller/DefaultController.php
+    
+polcode_product_controller:
+    type: annotation
+    resource: @PolcodeProductBundle/Controller/ProductAdminController.php
 
 api_get_users:
     pattern: /crud
