@@ -23,7 +23,8 @@
         "sonata-project/admin-bundle": "~2.3",
         "sonata-project/doctrine-orm-admin-bundle": "~2.3",
         "willdurand/propel-typehintable-behavior": "~1.0",
-        "stof/doctrine-extensions-bundle": "~1.1@dev"
+        "stof/doctrine-extensions-bundle": "~1.1@dev",
+        "a2lix/translation-form-bundle": "2.*@dev"
     },
     "require-dev": {
         "sensio/generator-bundle": "~2.3"

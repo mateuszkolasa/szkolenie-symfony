@@ -1,0 +1,22 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Produkt edit</h1>
+
+    {{ form(edit_form) }}
+
+        <ul class="record_actions">
+    <li>
+        <a href="{{ path('products_list') }}">
+            Back to the list
+        </a>
+    </li>
+    {% if is_granted('ROLE_SUPER_ADMIN') %}
+        <li>
+        	<form action="{{ path('product_delete', {product: entity.id}) }}">
+        		<button class="btn btn-danger">DELETE</button>
+        	</form>
+        </li>
+    {% endif %}
+</ul>
+{% endblock %}

@@ -21,9 +21,3 @@ services:
             - ~
         calls:
             - [ setTranslationDomain, [AcmeDemoBundle]]
-
-    polcode_product.admin.product:
-        class: PolcodeProductBundle\Admin\ProductAdmin
-        arguments: [~, PolcodeProductBundle\Entity\Product, PolcodeProductBundle:ProductAdmin]
-        tags:
-            - {name: sonata.admin, manager_type: orm, group: admin, label: Product}

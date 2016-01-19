@@ -1,0 +1,52 @@
+{% extends '::base.html.twig' %}
+
+{% block body -%}
+    <h1>Products list</h1>
+
+    <table border = 1 class="records_list">
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Desc</th>
+                <th>Price</th>
+                <th>Created</th>
+                <th>Updated</th>
+                <th>Slug</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for entity in entities %}
+            <tr>
+                <td>{{ entity.name }}</td>
+                <td>{{ entity.description }}</td>
+                <td>{{ entity.price }}</td>
+                <td>{% if entity.created %}{{ entity.created|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{% if entity.updated %}{{ entity.updated|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>{{ entity.slug }}</td>
+                <td>
+                <ul>
+                    <li>
+                        <a href="{{ path('product_show', { slug: entity.slug }) }}">show</a>
+                        {% for lang in entity.translations %}
+                        	<a href="{{ path('product_lang', {lang: lang.locale, slug: entity.slug}) }}">{{ lang.locale }}</a>
+                        {% endfor %}
+                    </li>
+                    <li>
+                        <a href="{{ path('product_edit', { product: entity.id }) }}">edit</a>
+                    </li>
+                </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+        <ul>
+        <li>
+            <a href="{{ path('product_new') }}">
+                Create a new entry
+            </a>
+        </li>
+    </ul>
+    {% endblock %}

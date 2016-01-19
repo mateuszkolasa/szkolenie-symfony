@@ -4,10 +4,12 @@ namespace PolcodeProductBundle\Entity;
 use FOS\UserBundle\Model\User as BaseUser;
 use Doctrine\ORM\Mapping as ORM;
 use Gedmo\Mapping\Annotation as Gedmo;
+use Gedmo\Translatable\Translatable;
 
 /**
  * @ORM\Entity
  * @ORM\Table(name="products")
+ * @Gedmo\TranslationEntity(class="PolcodeProductBundle\Entity\ProductTranslation")
  */
 class Product {
     /**
@@ -18,11 +20,13 @@ class Product {
     protected $id;
     
     /**
+     * @Gedmo\Translatable
      * @ORM\Column(type="text")
      */
     protected $name;
     
     /**
+     * @Gedmo\Translatable
      * @ORM\Column(type="string")
      */
     protected $description;
@@ -68,10 +72,21 @@ class Product {
 	 * @ORM\Column(length=128, unique=true)
 	 */
 	private $slug;
+
+    /**
+     * @ORM\OneToMany(targetEntity="ProductTranslation", mappedBy="object", cascade={"persist", "remove"})
+     */
+    protected $translations;
+
+    /**
+     * @Gedmo\Locale
+     */
+    private $locale;
 	
 	public function __construct() {
 	    $this->created = new \DateTime();
 	    $this->slug = uniqid();
+        $this->translations = new \Doctrine\Common\Collections\ArrayCollection();
 	}
 	
 	public function getId() {
@@ -162,6 +177,27 @@ class Product {
 	    $this->slug = $value;
 	
 	    return $this;
+	}
+
+	public function addTranslation(\PolcodeProductBundle\Entity\ProductTranslation $translations)
+	{
+		$this->translations->add($translations);
+		$translations->setObject($this);
+	}
+
+	public function removeTranslation(\PolcodeProductBundle\Entity\ProductTranslation $translations)
+	{
+		$this->translations->removeElement($translations);
+	}
+	
+	public function getTranslations()
+	{
+		return $this->translations;
+	}
+	
+	public function setLocale($locale)
+	{
+		$this->locale = $locale;
 	}
 	
 }

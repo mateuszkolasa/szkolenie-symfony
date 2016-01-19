@@ -16,6 +16,7 @@ class ProductAdmin extends Admin
         ->add('description', 'text', array('label' => 'Product Description'))
         ->add('price', 'number', array('label' => 'Product Price'))
         ->add('category', 'sonata_type_model_list', array('class' => 'PolcodeProductBundle\Entity\Category'))
+        ->add('translations', 'a2lix_translations', array())
         //->add('body') //if no type is specified, SonataAdminBundle tries to guess it
         ;
     }

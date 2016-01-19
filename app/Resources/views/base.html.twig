@@ -33,20 +33,11 @@
                 <!-- Grupowanie elementów menu w celu lepszego wyświetlania na urządzeniach moblinych -->
                 <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
                     <ul class="nav navbar-nav">
-                        <li class="active"><a href="#">Link</a></li>
-                        <!--<li class="dropdown">
-                            <a href="#" class="dropdown-toggle" data-toggle="dropdown">Lista rozwijana <span class="caret"></span></a>
-                            <ul class="dropdown-menu" role="menu">
-                                <li><a href="#">Akcja</a></li>
-                                <li><a href="#">Inna akcja</a></li>
-                                <li><a href="#">Coś jeszcze innego</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Oddzielone linki</a></li>
-                                <li class="divider"></li>
-                                <li><a href="#">Jeszcze jeden oddzielony link</a></li>
-                            </ul>
-                        </li>-->
+                        <li class="active"><a href="{{ path('products_list') }}">Produkty</a></li>
                     </ul>
+                    {% if app.user is not null %}
+                    <p class="navbar-text navbar-right">Witaj, {{ app.user.username }}</a></p>
+                    {% else %}
                     <form class="navbar-form navbar-right" role="search">
                         <div class="form-group">
                             <input type="text" class="form-control" placeholder="Login">
@@ -54,6 +45,7 @@
                         </div>
                         <button type="submit" class="btn btn-default">Zaloguj</button>
                     </form>
+                    {% endif %}
                 </div><!-- /.navbar-collapse -->
             </div><!-- /.container-fluid -->
         </nav>
